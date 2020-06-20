@@ -187,6 +187,8 @@ namespace AchMaps
                             dataGridView1[0, zz].Style.BackColor = Color.Orange;
                         else if (a.type == TypeMap.Objective)
                             dataGridView1[0, zz].Style.BackColor = Color.CadetBlue;
+                        else
+                            dataGridView1[0, zz].Style.BackColor = Color.Orange;
                         int i = 1;
                         foreach (var c in a.id)
                         {

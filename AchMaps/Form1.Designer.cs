@@ -37,6 +37,9 @@
             this.dodajKontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kF2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payday2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.holdoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,9 +50,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.payday2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.holdoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -144,9 +144,33 @@
             // kF2ToolStripMenuItem
             // 
             this.kF2ToolStripMenuItem.Name = "kF2ToolStripMenuItem";
-            this.kF2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kF2ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.kF2ToolStripMenuItem.Text = "Killing floor 2";
             this.kF2ToolStripMenuItem.Click += new System.EventHandler(this.kF2ToolStripMenuItem_Click);
+            // 
+            // payday2ToolStripMenuItem
+            // 
+            this.payday2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mapsToolStripMenuItem,
+            this.holdoutToolStripMenuItem});
+            this.payday2ToolStripMenuItem.Name = "payday2ToolStripMenuItem";
+            this.payday2ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.payday2ToolStripMenuItem.Text = "Payday 2";
+            this.payday2ToolStripMenuItem.Click += new System.EventHandler(this.Payday2ToolStripMenuItem_Click);
+            // 
+            // mapsToolStripMenuItem
+            // 
+            this.mapsToolStripMenuItem.Name = "mapsToolStripMenuItem";
+            this.mapsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.mapsToolStripMenuItem.Text = "Maps";
+            this.mapsToolStripMenuItem.Click += new System.EventHandler(this.MapsToolStripMenuItem_Click);
+            // 
+            // holdoutToolStripMenuItem
+            // 
+            this.holdoutToolStripMenuItem.Name = "holdoutToolStripMenuItem";
+            this.holdoutToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.holdoutToolStripMenuItem.Text = "Holdout";
+            this.holdoutToolStripMenuItem.Click += new System.EventHandler(this.HoldoutToolStripMenuItem_Click);
             // 
             // generateToolStripMenuItem
             // 
@@ -240,31 +264,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 10;
-            this.label9.Text = "v0.15";
-            // 
-            // payday2ToolStripMenuItem
-            // 
-            this.payday2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mapsToolStripMenuItem,
-            this.holdoutToolStripMenuItem});
-            this.payday2ToolStripMenuItem.Name = "payday2ToolStripMenuItem";
-            this.payday2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.payday2ToolStripMenuItem.Text = "Payday 2";
-            this.payday2ToolStripMenuItem.Click += new System.EventHandler(this.Payday2ToolStripMenuItem_Click);
-            // 
-            // mapsToolStripMenuItem
-            // 
-            this.mapsToolStripMenuItem.Name = "mapsToolStripMenuItem";
-            this.mapsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mapsToolStripMenuItem.Text = "Maps";
-            this.mapsToolStripMenuItem.Click += new System.EventHandler(this.MapsToolStripMenuItem_Click);
-            // 
-            // holdoutToolStripMenuItem
-            // 
-            this.holdoutToolStripMenuItem.Name = "holdoutToolStripMenuItem";
-            this.holdoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.holdoutToolStripMenuItem.Text = "Holdout";
-            this.holdoutToolStripMenuItem.Click += new System.EventHandler(this.HoldoutToolStripMenuItem_Click);
+            this.label9.Text = "v0.16";
             // 
             // Form1
             // 
