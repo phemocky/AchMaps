@@ -283,51 +283,51 @@ namespace AchMaps
         private void generateToolStripMenuItem_Click_1(object sender, EventArgs e)//generating stuff i did badly 
         {
             
-            DirectoryInfo d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\killingfloor");
-            string id = "1250";            
-            RapairThisGame(d,id);
+            //DirectoryInfo d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\killingfloor");
+            //string id = "1250";            
+            //RapairThisGame(d,id);
 
-            d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\killingfloor2");
-            id = "232090";
-            RapairThisGame(d, id);
+            //d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\killingfloor2");
+            //id = "232090";
+            //RapairThisGame(d, id);
 
-            d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\payday2");
-            id = "218620";
-            RapairThisGame(d, id);
+            //d = new DirectoryInfo(@"D:\vs\AchMaps\AchMaps\bin\Debug\payday2");
+            //id = "218620";
+            //RapairThisGame(d, id);
 
         }
 
         private void RapairThisGame(DirectoryInfo d, string id)
         {
-            dynamic accountId = comboBox1.SelectedItem;
-            string idk = accountId.ID;
-            foreach (var file in d.GetFiles())
-            {
+            //dynamic accountId = comboBox1.SelectedItem;
+            //string idk = accountId.ID;
+            //foreach (var file in d.GetFiles())
+            //{
 
-                CategoryOfAchievement CoA = JsonConvert.DeserializeObject<CategoryOfAchievement>(File.ReadAllText(file.FullName));
-                string adres = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + id + "&key=" + key.GetKey() + "&steamid=" + idk;
-                using (WebClient client = new WebClient())
-                {
-                    string htmlCode = client.DownloadString(adres);
-                    JsonOutAchs achievements = JsonConvert.DeserializeObject<JsonOutAchs>(htmlCode);
-                    int ii = 0;
-                    foreach (var b in achievements.playerstats.achievements)
-                    {
-                        var a = CoA.maps.Find(x => x.id.Contains(ii.ToString()));
-                        if (a != null)
-                        {
-                            a.id = a.id.Select(s => s.Replace(ii.ToString(), b.apiname)).ToList();
+            //    CategoryOfAchievement CoA = JsonConvert.DeserializeObject<CategoryOfAchievement>(File.ReadAllText(file.FullName));
+            //    string adres = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + id + "&key=" + key.GetKey() + "&steamid=" + idk;
+            //    using (WebClient client = new WebClient())
+            //    {
+            //        string htmlCode = client.DownloadString(adres);
+            //        JsonOutAchs achievements = JsonConvert.DeserializeObject<JsonOutAchs>(htmlCode);
+            //        int ii = 0;
+            //        foreach (var b in achievements.playerstats.achievements)
+            //        {
+            //            var a = CoA.maps.Find(x => x.id.Contains(ii.ToString()));
+            //            if (a != null)
+            //            {
+            //                a.id = a.id.Select(s => s.Replace(ii.ToString(), b.apiname)).ToList();
                             
-                        }
-                        ii++;
+            //            }
+            //            ii++;
 
-                    }
+            //        }
 
-                }
-                string json = JsonConvert.SerializeObject(CoA);
-                File.WriteAllText(file.FullName, json);
+            //    }
+            //    string json = JsonConvert.SerializeObject(CoA);
+            //    File.WriteAllText(file.FullName, json);
 
-            }
+            //}
         }
 
         private void kF2ToolStripMenuItem_Click(object sender, EventArgs e)

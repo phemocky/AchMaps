@@ -15,7 +15,7 @@ namespace AchMaps
 {
     public partial class Form2 : Form
     {
-        bool czyruszane = false;
+        bool isUsed = false;
         Key key = new Key();
         public Form2()
         {
@@ -42,16 +42,16 @@ namespace AchMaps
             if (checkBox1.Checked)
             {
                 
-                string kontoD = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + key.GetKey() + "&vanityurl=" + textBox1.Text;             
+                string accountD = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + key.GetKey() + "&vanityurl=" + textBox1.Text;             
                 using (WebClient client = new WebClient())
                 {
-                    string htmlCode = client.DownloadString(kontoD);
+                    string htmlCode = client.DownloadString(accountD);
                     AccountContainer acc = JsonConvert.DeserializeObject<AccountContainer>(htmlCode);
                     if(acc.response.success == "1")
                     {
-                        List<string> tmpKonto = File.ReadAllLines("Account.txt").ToList();
-                        tmpKonto.Add(textBox2.Text + ":" + acc.response.steamid);
-                        File.WriteAllLines("Account.txt", tmpKonto);
+                        List<string> tmpAcc = File.ReadAllLines("Account.txt").ToList();
+                        tmpAcc.Add(textBox2.Text + ":" + acc.response.steamid);
+                        File.WriteAllLines("Account.txt", tmpAcc);
                         this.Close();
                         Application.Restart();
                     }
@@ -61,10 +61,10 @@ namespace AchMaps
             }
             else
             {
-                List<string> tmpKonto = File.ReadAllLines("Account.txt").ToList();
-                string wynik = textBox2.Text + ":" + textBox1.Text;
-                tmpKonto.Add(wynik);
-                File.WriteAllLines("Account.txt", tmpKonto);
+                List<string> tmpAcc = File.ReadAllLines("Account.txt").ToList();
+                string result = textBox2.Text + ":" + textBox1.Text;
+                tmpAcc.Add(result);
+                File.WriteAllLines("Account.txt", tmpAcc);
                 Application.Restart();
             }
             
@@ -72,16 +72,16 @@ namespace AchMaps
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (czyruszane == false)
+            if (isUsed == false)
             {
                 textBox2.Text = textBox1.Text;
-                czyruszane = false;
+                isUsed = false;
             } 
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            czyruszane = true;
+            isUsed = true;
         }
     }
 }
