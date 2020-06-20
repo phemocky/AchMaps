@@ -15,8 +15,8 @@ namespace AchMaps
 {
     public partial class Form1 : Form
     {
-        List<Konto> konta = new List<Konto>();
-        List<Games> gry = new List<Games>();
+        List<AccountData> LAccounts = new List<AccountData>();
+        List<Games> LGames = new List<Games>();
         Games ActualGame = new Games();
         CategoryOfAchievement ActualCoA = new CategoryOfAchievement();
         Key key = new Key();
@@ -27,19 +27,19 @@ namespace AchMaps
 
             //TEST(); 
 
-            if (!File.Exists("konto.txt"))
+            if (!File.Exists("Account.txt"))
             {
-                File.Create("konto.txt");
-                MessageBox.Show("Brakuje pliku txt, nastąpi restart programu");
+                File.Create("Account.txt");
+                MessageBox.Show("Missing txt, incoming restart application");
                 Application.Restart();
             }              
-            string[] kto = File.ReadAllLines("konto.txt");
-            if (!CzyKtokolwiekJest(kto))
+            string[] who = File.ReadAllLines("Account.txt");
+            if (!IsSomeoneExist(who))
             {
-                nowaForma();
+                NewAccountForm();
             }
-            kontaDoCB1();
-            gryDoCB23();
+            AccountToCB();
+            GamesToCB();
             label4.ForeColor = Color.MediumPurple;
             label5.ForeColor = Color.Orange;
             label6.ForeColor = Color.CadetBlue;
@@ -47,11 +47,11 @@ namespace AchMaps
             label7.ForeColor = Color.Orange;
             
         }
-        bool CzyKtokolwiekJest(string[] kto)
+        bool IsSomeoneExist(string[] who)
         {
-            if (kto.Length == 0)
+            if (who.Length == 0)
             {
-                MessageBox.Show("Dodaj konto!");
+                MessageBox.Show("Add accout!");
                 return false;
             }
             return true;
@@ -59,70 +59,70 @@ namespace AchMaps
 
         private void button2_Click(object sender, EventArgs e)
         {
-            nowaForma();
+            NewAccountForm();
         }
         
-        private void nowaForma()
+        private void NewAccountForm()
         {
             Form2 abc = new Form2();
             abc.ShowDialog();                   
         }
-        private void kontaDoCB1()
+        private void AccountToCB()
         {
             comboBox1.Items.Clear();
-            string[] kto = File.ReadAllLines("konto.txt");
+            string[] kto = File.ReadAllLines("Account.txt");
             
             foreach(string a in kto)
             {
-                Konto b = new Konto();
+                AccountData b = new AccountData();
                 string[] c = a.Split(':');
-                b.nazwa = c[0];
+                b.name = c[0];
                 b.ID = c[1];
-                konta.Add(b);
+                LAccounts.Add(b);
             }
-            comboBox1.DataSource = konta;
-            comboBox1.DisplayMember = "nazwa";
+            comboBox1.DataSource = LAccounts;
+            comboBox1.DisplayMember = "Name";
             comboBox1.Format += (s, e) => 
             {
-                e.Value = ((Konto)e.Value).nazwa;
+                e.Value = ((AccountData)e.Value).name;
             };//skopiowanie, nie ogarniam ale dziala!!!
 
 
 
         }
-        private void gryDoCB23()
+        private void GamesToCB()
         {
             Games kf1 = new Games("killingfloor");
             Games kf2 = new Games("killingfloor2");
             Games pd2 = new Games("payday2");
 
-            kf1.nazwa = "Killing Floor";
+            kf1.name = "Killing Floor";
             kf1.ID = "1250";
-            kf1.podNazwa.Add("Map\\Difficulty", 0);
-            kf1.podNazwa.Add("Map\\Collectable", 1);
-            gry.Add(kf1);
+            kf1.underName.Add("Map\\Difficulty", 0);
+            kf1.underName.Add("Map\\Collectable", 1);
+            LGames.Add(kf1);
 
-            kf2.nazwa = "Killing Floor 2";
+            kf2.name = "Killing Floor 2";
             kf2.ID = "232090";
-            kf2.podNazwa.Add("Map\\Difficulty", 0);
-            kf2.podNazwa.Add("Perk\\Difficulty", 1);
-            kf2.podNazwa.Add("Perk\\Lvl", 2);
-            gry.Add(kf2);
+            kf2.underName.Add("Map\\Difficulty", 0);
+            kf2.underName.Add("Perk\\Difficulty", 1);
+            kf2.underName.Add("Perk\\Lvl", 2);
+            LGames.Add(kf2);
 
-            pd2.nazwa = "PAYDAY 2";
+            pd2.name = "PAYDAY 2";
             pd2.ID = "218620";
-            pd2.podNazwa.Add("Map\\Difficulty", 0);
-            pd2.podNazwa.Add("Level", 1);
-            pd2.podNazwa.Add("Secret", 2);
-            pd2.podNazwa.Add("Holdout", 3);
-            gry.Add(pd2);
+            pd2.underName.Add("Map\\Difficulty", 0);
+            pd2.underName.Add("Level", 1);
+            pd2.underName.Add("Secret", 2);
+            pd2.underName.Add("Holdout", 3);
+            LGames.Add(pd2);
 
 
-            comboBox2.DataSource = gry;
+            comboBox2.DataSource = LGames;
             comboBox2.DisplayMember = "nazwa";
             comboBox2.Format += (s, e) =>
             {
-                e.Value = ((Games)e.Value).nazwa;
+                e.Value = ((Games)e.Value).name;
             };//skopiowanie, nie ogarniam ale dziala!!!
         }
 
@@ -133,13 +133,11 @@ namespace AchMaps
             {
                 dataGridView1.Rows.Clear();
                 dataGridView1.Refresh();
-                List<string> wynik = new List<string>();
                 dynamic item = comboBox2.SelectedItem;
                 string id = item.ID;
-                string adresLok = item.adres;
 
-                dynamic kontoid = comboBox1.SelectedItem;
-                string idk = kontoid.ID;
+                dynamic accountId = comboBox1.SelectedItem;
+                string idk = accountId.ID;
                 string adres = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=" + id + "&key=" +  key.GetKey() + "&steamid=" + idk;
                 using (WebClient client = new WebClient())
                 {
@@ -177,13 +175,13 @@ namespace AchMaps
 
                         foreach (var c in a.id)
                         {
-                            if (c == "NOPE")
+                            if (c == "NULL")
                                 continue;
                  
                             datas.Add(c);
                         }
                         dataGridView1.Rows.Add(datas.ToArray());
-                        if (a.type == TypeMap.Long || a.type == TypeMap.Survival)
+                        if (a.type == TypeMap.Long || a.type == TypeMap.Waves)
                             dataGridView1[0, zz].Style.BackColor = Color.MediumPurple;
                         else if (a.type == TypeMap.Normal)
                             dataGridView1[0, zz].Style.BackColor = Color.Orange;
@@ -192,15 +190,15 @@ namespace AchMaps
                         int i = 1;
                         foreach (var c in a.id)
                         {
-                            if (c == "NOPE")
+                            if (c == "NULL")
                             {
                                 dataGridView1[i, zz].Value = "NULL";
-                                dataGridView1[i, zz].Style.BackColor = Color.Black;
+                                dataGridView1[i, zz].Style.BackColor = Color.LightGray;
                                 i++;
                                 continue;
                             }
 
-                            if (dicToRead.ContainsKey(c))
+                            else if (dicToRead.ContainsKey(c))
                             {
                                 if (dicToRead[c])
                                 {
@@ -213,8 +211,13 @@ namespace AchMaps
                                     dataGridView1[i, zz].Style.BackColor = Color.OrangeRed;
                                 }
                             }
-                            else
-                                MessageBox.Show("F");
+                            else//For some reason "NULL" != "NULL" 
+                            {
+                                dataGridView1[i, zz].Value = "NULL";
+                                dataGridView1[i, zz].Style.BackColor = Color.LightGray;
+                                i++;
+                                continue;
+                            }
                             i++;
                         }
                         zz++;
@@ -242,30 +245,30 @@ namespace AchMaps
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic item = comboBox2.SelectedItem;
-            Dictionary<string, int> b = item.podNazwa;
+            Dictionary<string, int> b = item.underName;
             comboBox3.DataSource = b.ToList();
             label4.Visible = false;
             label5.Visible = false;
             label6.Visible = false;
             label7.Visible = false;
             label8.Visible = false;
-            if (item.nazwa == "Killing Floor")
+            if (item.name == "Killing Floor")
             {
-                ActualGame = gry[0];
+                ActualGame = LGames[0];
                 label4.Visible = true;
                 label5.Visible = true;
                 label6.Visible = true;
             }
-            else if (item.nazwa == "Killing Floor 2")
+            else if (item.name == "Killing Floor 2")
             {
-                ActualGame = gry[1];
+                ActualGame = LGames[1];
                 label7.Visible = true;
                 label8.Visible = true;
                 label6.Visible = true;
             }
-            else if (item.nazwa == "PAYDAY 2")
+            else if (item.name == "PAYDAY 2")
             {
-                ActualGame = gry[2];
+                ActualGame = LGames[2];
             }
         }
         
@@ -294,8 +297,8 @@ namespace AchMaps
 
         private void RapairThisGame(DirectoryInfo d, string id)
         {
-            dynamic kontoid = comboBox1.SelectedItem;
-            string idk = kontoid.ID;
+            dynamic accountId = comboBox1.SelectedItem;
+            string idk = accountId.ID;
             foreach (var file in d.GetFiles())
             {
 
@@ -327,11 +330,11 @@ namespace AchMaps
 
         private void kF2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FAddNewMap form = new FAddNewMap(gry[1],0);
+            FAddNewMap form = new FAddNewMap(LGames[1],0);
             form.ShowDialog();
             if(form.DialogResult == DialogResult.OK)
             {
-                gry[1] = form.Gra;
+                LGames[1] = form.Game;
 
                 var path2 = Path.Combine(Directory.GetCurrentDirectory() + @"\" + "killingfloor2");
                 DirectoryInfo d = new DirectoryInfo(path2);
@@ -339,7 +342,7 @@ namespace AchMaps
                 {
                     if(file.Name == "0_MapsDifficulty.txt")
                     {
-                        var CoA = gry[1].categories[0];
+                        var CoA = LGames[1].categories[0];
                         File.WriteAllText(file.FullName, JsonConvert.SerializeObject(CoA));
                     }
                     
@@ -365,11 +368,11 @@ namespace AchMaps
 
         private void MapsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FAddNewMap form = new FAddNewMap(gry[2],0);
+            FAddNewMap form = new FAddNewMap(LGames[2],0);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
-                gry[2] = form.Gra;
+                LGames[2] = form.Game;
 
                 var path2 = Path.Combine(Directory.GetCurrentDirectory() + @"\" + "payday2");
                 DirectoryInfo d = new DirectoryInfo(path2);
@@ -377,7 +380,7 @@ namespace AchMaps
                 {
                     if (file.Name == "0_MapsDifficulty.txt")
                     {
-                        var CoA = gry[2].categories[0];
+                        var CoA = LGames[2].categories[0];
                         File.WriteAllText(file.FullName, JsonConvert.SerializeObject(CoA));
                     }
                 }
@@ -386,11 +389,11 @@ namespace AchMaps
 
         private void HoldoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FAddNewMap form = new FAddNewMap(gry[2],3);
+            FAddNewMap form = new FAddNewMap(LGames[2],3);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
-                gry[2] = form.Gra;
+                LGames[2] = form.Game;
 
                 var path2 = Path.Combine(Directory.GetCurrentDirectory() + @"\" + "payday2");
                 DirectoryInfo d = new DirectoryInfo(path2);
@@ -398,7 +401,7 @@ namespace AchMaps
                 {
                     if (file.Name == "3_Holdout.txt")
                     {
-                        var CoA = gry[2].categories[3];
+                        var CoA = LGames[2].categories[3];
                         File.WriteAllText(file.FullName, JsonConvert.SerializeObject(CoA));
                     }
                 }

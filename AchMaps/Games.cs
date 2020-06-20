@@ -10,11 +10,11 @@ namespace AchMaps
 {
     public class Games
     {
-        public string nazwa;
+        public string name;
         public string ID;
-        public Dictionary<string, int> podNazwa = new Dictionary<string, int>();
+        public Dictionary<string, int> underName = new Dictionary<string, int>();
         public List<CategoryOfAchievement> categories;
-        public string adres;
+        public string address;
 
         public Games()
         {
@@ -23,7 +23,7 @@ namespace AchMaps
         {
             List<CategoryOfAchievement> _categories = new List<CategoryOfAchievement>();
             categories = _categories;
-            adres = path;
+            address = path;
             var path2 = Path.Combine(Directory.GetCurrentDirectory() + @"\" + path);
             //if (!Directory.Exists(path2))
             //{

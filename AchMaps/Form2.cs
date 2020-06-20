@@ -49,9 +49,9 @@ namespace AchMaps
                     AccountContainer acc = JsonConvert.DeserializeObject<AccountContainer>(htmlCode);
                     if(acc.response.success == "1")
                     {
-                        List<string> tmpKonto = File.ReadAllLines("konto.txt").ToList();
+                        List<string> tmpKonto = File.ReadAllLines("Account.txt").ToList();
                         tmpKonto.Add(textBox2.Text + ":" + acc.response.steamid);
-                        File.WriteAllLines("konto.txt", tmpKonto);
+                        File.WriteAllLines("Account.txt", tmpKonto);
                         this.Close();
                         Application.Restart();
                     }
@@ -61,10 +61,10 @@ namespace AchMaps
             }
             else
             {
-                List<string> tmpKonto = File.ReadAllLines("konto.txt").ToList();
+                List<string> tmpKonto = File.ReadAllLines("Account.txt").ToList();
                 string wynik = textBox2.Text + ":" + textBox1.Text;
                 tmpKonto.Add(wynik);
-                File.WriteAllLines("konto.txt", tmpKonto);
+                File.WriteAllLines("Account.txt", tmpKonto);
                 Application.Restart();
             }
             

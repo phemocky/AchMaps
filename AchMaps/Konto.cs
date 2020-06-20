@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AchMaps
 {
-    class Konto
+    class AccountData
     {
-        public string nazwa;
+        public string name;
         public string ID;
     }
 }

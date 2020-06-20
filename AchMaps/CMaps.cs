@@ -22,7 +22,7 @@ namespace AchMaps
         Normal = 0,
         Long = 1,
         Objective = 2,
-        Survival = 3,
+        Waves = 3,
         Bain = 4,
         Classic = 5,
         Event = 6,

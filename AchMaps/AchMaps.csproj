@@ -107,15 +107,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BPForDatas\killingfloor2\0_MapsDifficulty.txt" />
-    <Content Include="BPForDatas\killingfloor2\1_PerkDifficulty.txt" />
-    <Content Include="BPForDatas\killingfloor2\2_PerkLevel.txt" />
-    <Content Include="BPForDatas\killingfloor\0_MapsDifficulty.txt" />
-    <Content Include="BPForDatas\killingfloor\1_MapsCollectable.txt" />
-    <Content Include="BPForDatas\payday2\0_MapsDifficulty.txt" />
-    <Content Include="BPForDatas\payday2\1_Level.txt" />
-    <Content Include="BPForDatas\payday2\2_Secret.txt" />
-    <Content Include="BPForDatas\payday2\3_Holdout.txt" />
+    <Content Include="BUForDatas\killingfloor2\0_MapsDifficulty.txt" />
+    <Content Include="BUForDatas\killingfloor2\1_PerkDifficulty.txt" />
+    <Content Include="BUForDatas\killingfloor2\2_PerkLevel.txt" />
+    <Content Include="BUForDatas\killingfloor\0_MapsDifficulty.txt" />
+    <Content Include="BUForDatas\killingfloor\1_MapsCollectable.txt" />
+    <Content Include="BUForDatas\payday2\0_MapsDifficulty.txt" />
+    <Content Include="BUForDatas\payday2\1_Level.txt" />
+    <Content Include="BUForDatas\payday2\2_Secret.txt" />
+    <Content Include="BUForDatas\payday2\3_Holdout.txt" />
+    <Content Include="Links.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

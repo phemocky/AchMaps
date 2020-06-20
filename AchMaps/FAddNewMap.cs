@@ -12,25 +12,25 @@ namespace AchMaps
 {
     public partial class FAddNewMap : Form
     {
-        public Games Gra;
+        public Games Game;
         int curpanel = -1;
-        public FAddNewMap(Games gra, int cat)
+        public FAddNewMap(Games game, int cat)
         {
-            InitializeComponent();            
-            Gra = gra;
-            if(gra.nazwa == "Killing Floor 2" && cat == 0)
+            InitializeComponent();
+            Game = game;
+            if(Game.name == "Killing Floor 2" && cat == 0)
             {
-                label1.Text = gra.nazwa + " : " + "Map";
+                label1.Text = Game.name + " : " + "Map";
                 panel1.Visible = true;
                 curpanel = 1;
                 comboBox1.Items.Add(TypeMap.Normal);
                 comboBox1.Items.Add(TypeMap.Objective);
-                comboBox1.Items.Add(TypeMap.Survival);
+                comboBox1.Items.Add(TypeMap.Waves);
 
             }
-            else if (gra.nazwa == "PAYDAY 2" && cat == 0)
+            else if (Game.name == "PAYDAY 2" && cat == 0)
             {
-                label1.Text = gra.nazwa + " : " + "Map";
+                label1.Text = Game.name + " : " + "Map";
                 panel2.Visible = true;
                 curpanel = 2;
                 //comboBox2.DataSource = Enum.GetValues(typeof(TypeMap));
@@ -46,9 +46,9 @@ namespace AchMaps
                 comboBox2.Items.Add(TypeMap.Classic);
                 comboBox2.Items.Add(TypeMap.Continental);
             }
-            else if (gra.nazwa == "PAYDAY 2" && cat == 3)
+            else if (Game.name == "PAYDAY 2" && cat == 3)
             {
-                label1.Text = gra.nazwa + " : " + "Holdout";
+                label1.Text = Game.name + " : " + "Holdout";
                 panel3.Visible = true;
                 curpanel = 3;
             }
@@ -79,7 +79,7 @@ namespace AchMaps
                 map.id.Add(textBox4.Text);
                 map.id.Add(textBox5.Text);
                 map.id.Add(textBox6.Text);
-                Gra.categories[0].maps.Add(map);
+                Game.categories[0].maps.Add(map);
                 refreshDataGrid(0);
                 textBox1.Text = "";
             }
@@ -101,7 +101,7 @@ namespace AchMaps
                 map.id.Add(textBox13.Text);
                 map.id.Add(textBox14.Text);
                 map.id.Add(textBox15.Text);
-                Gra.categories[0].maps.Add(map);
+                Game.categories[0].maps.Add(map);
                 refreshDataGrid(0);
                 textBox7.Text = "";
             }
@@ -119,7 +119,7 @@ namespace AchMaps
                 map.id.Add(textBox21.Text);
                 map.id.Add(textBox23.Text);
                 map.id.Add(textBox24.Text);
-                Gra.categories[0].maps.Add(map);
+                Game.categories[0].maps.Add(map);
                 refreshDataGrid(3);
             }
 
@@ -131,7 +131,7 @@ namespace AchMaps
             {
                 dataGridView1.Rows.RemoveAt(i);
             }
-            var ActualCoA = Gra.categories[val];
+            var ActualCoA = Game.categories[val];
             List<string> tabtmp = new List<string>();
             foreach (string ac in ActualCoA.upName)
             {
