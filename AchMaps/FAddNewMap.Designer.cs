@@ -49,6 +49,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -64,12 +70,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
@@ -317,6 +317,54 @@
             this.panel2.TabIndex = 22;
             this.panel2.Visible = false;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(359, 97);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(139, 13);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Death Sentence One Down";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(377, 113);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 23;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(177, 97);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(85, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Death Sentence";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(177, 113);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 20);
+            this.textBox14.TabIndex = 21;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 97);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 13);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Death Wish";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(9, 113);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 19;
+            // 
             // button4
             // 
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -326,6 +374,7 @@
             this.button4.TabIndex = 5;
             this.button4.Text = "SAVE";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button1_Click);
             // 
             // label9
             // 
@@ -441,54 +490,6 @@
             this.textBox12.Size = new System.Drawing.Size(100, 20);
             this.textBox12.TabIndex = 15;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 97);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 13);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Death Wish";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(9, 113);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 19;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(177, 97);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Death Sentence";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(177, 113);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 21;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(359, 97);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(139, 13);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Death Sentence One Down";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(377, 113);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 20);
-            this.textBox15.TabIndex = 23;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.button5);
@@ -517,6 +518,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "SAVE";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button1_Click);
             // 
             // label22
             // 

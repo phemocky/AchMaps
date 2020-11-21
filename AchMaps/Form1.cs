@@ -409,5 +409,10 @@ namespace AchMaps
                 }
             }
         }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

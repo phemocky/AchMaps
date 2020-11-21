@@ -101,6 +101,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1009, 651);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // comboBox3
             // 
@@ -264,7 +265,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 10;
-            this.label9.Text = "v0.16";
+            this.label9.Text = "v0.17";
             // 
             // Form1
             // 
