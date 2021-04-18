@@ -148,10 +148,11 @@ namespace AchMaps
                     int ii = 0;
                     dynamic cb3 = comboBox3.SelectedItem;
                     ActualCoA = ActualGame.categories[cb3.Value];
+                    int achievedAchs = 0;
                     foreach (var b in achievements.playerstats.achievements)
                     {
                         if (b.achieved == 1)
-                            dicToRead.Add(b.apiname, true);
+                            dicToRead.Add(b.apiname, true);                           
                         else
                             dicToRead.Add(b.apiname, false);
                         ii++;
@@ -206,6 +207,7 @@ namespace AchMaps
                                 {
                                     dataGridView1[i, zz].Value = "Done";
                                     dataGridView1[i, zz].Style.BackColor = Color.GreenYellow;
+                                    achievedAchs++;
                                 }
                                 else
                                 {
@@ -225,8 +227,8 @@ namespace AchMaps
                         zz++;
                     }
 
-                   
 
+                    label10.Text = achievedAchs + " / " + ActualCoA.maps.Count * (ActualCoA.upName.Count-2) + " achievements.\n" + Math.Floor(100 * (float)((float)achievedAchs / ((float)ActualCoA.maps.Count * (float)(ActualCoA.upName.Count-2)))) + "% Done";  
                     dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
             }

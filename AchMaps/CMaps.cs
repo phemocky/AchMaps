@@ -29,12 +29,13 @@ namespace AchMaps
         Hector = 7,
         Jimmy = 8,
         Locky = 9,
-        Buther = 10,
+        Butcher = 10,
         Continental = 11,
         Dentist = 12,
         Elephant = 13,
         Vlad = 14,
         Holdout = 15,
+        JiuFeng = 16,
     }
     public class CategoryOfAchievement
     {

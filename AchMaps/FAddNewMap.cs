@@ -39,7 +39,7 @@ namespace AchMaps
                 comboBox2.Items.Add(TypeMap.Hector);
                 comboBox2.Items.Add(TypeMap.Elephant);
                 comboBox2.Items.Add(TypeMap.Event);
-                comboBox2.Items.Add(TypeMap.Buther);
+                comboBox2.Items.Add(TypeMap.Butcher);
                 comboBox2.Items.Add(TypeMap.Dentist);
                 comboBox2.Items.Add(TypeMap.Jimmy);
                 comboBox2.Items.Add(TypeMap.Locky);
