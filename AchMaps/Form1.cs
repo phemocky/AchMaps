@@ -236,7 +236,7 @@ namespace AchMaps
 
             catch (Exception)
             {
-                MessageBox.Show("Wrong ID, private profile, account doesnt have that game or private games list (patch from 11.04.2018)", "Error");
+                MessageBox.Show("Missing key in key.txt, Wrong ID, private profile, account doesnt have that game or private games list (patch from 11.04.2018)", "Error");
             }
         }
 
